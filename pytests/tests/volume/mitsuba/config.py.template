@@ -1,0 +1,61 @@
+import os
+from os.path import join, dirname, realpath
+
+RES_SCENE_DIR = realpath(join(dirname(__file__), '../../../resources/data/scenes'))
+DIFF_SCENE_DIR = realpath(join(dirname(__file__), '../../../../scenes'))
+OUTPUT_DIR = realpath(join(DIFF_SCENE_DIR, '..', 'outputs'))
+CBOX_PARAM_NAMES = [
+    '/Scene/Mesh[id="_unnamed_10"]/BSDF[id="white_back"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_11"]/BSDF[id="green"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_12"]/BSDF[id="red"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_13"]/BSDF[id="white_small_box"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_14"]/BSDF[id="white_large_box"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_6"]/BSDF[id="white_luminaire"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_8"]/BSDF[id="white_floor"]/ContinuousSpectrum/rgb',
+    '/Scene/Mesh[id="_unnamed_9"]/BSDF[id="white_ceiling"]/ContinuousSpectrum/rgb',
+]
+TEXTURED_PARAM_NAMES = [
+    '/Scene/Mesh[id="_unnamed_13"]/BSDF[id="white_small_box"]/ContinuousSpectrum[id="_unnamed_14"]/bitmap',
+    '/Scene/Mesh[id="_unnamed_15"]/BSDF[id="white_large_box"]/ContinuousSpectrum[id="_unnamed_16"]/bitmap',
+]
+HOMOGENEOUS_DENSITY_PARAM_NAMES = [
+    '/Scene/Medium[id="medium1"]/density',
+]
+HETEROGENEOUS_DENSITY_PARAM_NAMES = [
+    '/Scene/Medium[id="medium1"]/Texture3D[id="medium-density"]/data',
+    # '/Scene/Medium[id="medium1"]/Texture3D[id="medium-density"]/ContinuousSpectrum/value',
+]
+ALBEDO_PARAM_NAMES = [
+    '/Scene/Medium[id="medium1"]/Texture3D[id="albedo"]/data_r',
+    '/Scene/Medium[id="medium1"]/Texture3D[id="albedo"]/data_g',
+    '/Scene/Medium[id="medium1"]/Texture3D[id="albedo"]/data_b',
+]
+
+
+CONFIGS = {
+    'smoke-plume-res-111-white-absorption': {
+        'scene': '{$SCENE$}',
+        'ref': '{$REF_NAME$}',
+        'num_cameras': {$NUM_CAMERAS$},
+        'params': HETEROGENEOUS_DENSITY_PARAM_NAMES,
+        'has_volumes': True,
+        'is_heterogeneous': True,
+        'forward_spp': 64,
+        'backward_spp': 64,
+        # 'forward_spp': 256,
+        # 'backward_spp': 256,
+        'learning_rate': 2e-3, #2e0,  #1e0,
+        'max_iterations': 300,
+        'scene_params': [
+            ('res', '{$IMG_RES$}'),
+            ('volume_filename', '{$INITIAL_VOLUME$}'),
+            ('smoke_color', '0.0, 0.0, 0.0'),
+        ],
+        'ref_scene_params': [
+            ('res', '{$IMG_RES$}'),
+            ('volume_filename', '{$REFERENCE_VOLUME$}'),
+            ('smoke_color', '0.0, 0.0, 0.0'),
+        ],
+        'ref_spp': 128,
+    },
+}

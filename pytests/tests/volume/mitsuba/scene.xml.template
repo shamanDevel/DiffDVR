@@ -1,0 +1,59 @@
+<scene version="2.0.0">
+    <default name="spp" value="64"/>
+    <default name="res" value="128"/>
+    <default name="max_depth" value="8"/>
+    <default name="pixel_format" value="rgb"/>
+    <default name="volume_filename" value="textures/noise.vol"/>
+
+    <default name="smoke_color" value="0.0, 0.0, 0.0"/>
+    <default name="density" value="5"/>
+    <default name="hide_emitters" value="false"/>
+
+
+    <integrator type="volpath">
+        <integer name="max_depth" value="$max_depth"/>
+        <integer name="rr_depth" value="$max_depth"/>
+        <boolean name="hide_emitters" value="$hide_emitters"/>
+    </integrator>
+
+
+    <film type="hdrfilm" id="film">
+        <integer name="width" value="$res"/>
+        <integer name="height" value="$res"/>
+        <rfilter type="box"/>
+        <string  name="pixel_format" value="$pixel_format"/>
+    </film>
+    <sampler type="independent" id="sampler">
+        <integer name="sample_count" value="$spp"/>
+    </sampler>
+
+    {$SENSORS$}
+
+    <emitter type="constant">
+        <spectrum name="radiance" value="1.0"/>
+    </emitter>
+
+    <medium id="medium1" type="heterogeneous_absorptive">
+        <float name="density_scale" value="30"/>
+        <texture3d type="grid3d" name="density" id="medium-density">
+            <transform name="to_world">
+                <scale x="1" y="1" z="1"/>
+                <translate x="-0.5" y="-0.5" z="-0.5"/>
+            </transform>
+
+            <string name="filename" value="$volume_filename"/>
+        </texture3d>
+        <boolean name="use_raymarching" value="true"/>
+    </medium>
+
+    <shape type="obj" id="volume_bbox">
+        <string name="filename" value="../medium-opt/meshes/cube_unit.obj"/>
+        <bsdf type="null"/>
+        <ref id="medium1" name="interior"/>
+
+        <transform name="to_world">
+            <scale x="1" y="1" z="1"/>
+            <translate x="-0.5" y="-0.5" z="-0.5"/>
+        </transform>
+    </shape>
+</scene>

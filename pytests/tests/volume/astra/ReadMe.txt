@@ -1,0 +1,1 @@
+Place the astra binaries into a subfolder "astra".
