@@ -1,6 +1,6 @@
 # Differentiable Direct Volume Rendering
 
-The source code for the VIS submission 1136 "Differentiable Direct Volume Rendering"
+The source code for the VIS 2021 submission "Differentiable Direct Volume Rendering" by Sebastian Weiss and Rüdiger Westermann
 
 ## Requirements
 
