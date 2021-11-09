@@ -13,7 +13,7 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-#include <Windows.h>
+//#include <Windows.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
