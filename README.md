@@ -16,7 +16,8 @@ This is the setup which was used to develop the code and execute the experiments
 
 Installation: simply run cmake and compile
 
-
+Note: some users reported that the script to find the PyTorch installation may not be always sucessful. The error reads as something like `CMake Error: The following variables are used in this project, but they are set to NOTFOUND. Please set them or make sure they are set and tested correctly in the CMake files: TORCH_LIB_c10 ...`.
+In that case you need to manually specify the paths, see issue [#2](https://github.com/shamanDevel/DiffDVR/issues/2#issuecomment-1038396900).
 
 ## Project structure:
 
