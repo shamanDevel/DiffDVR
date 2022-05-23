@@ -149,7 +149,7 @@ void testAdjointTF(double epsilon=1e-6, double precision=1e-4, double margin=1e-
 			MatrixXr adj_tf = MatrixXr::Zero(tf.rows(), tf.cols());
 			auto adj_tfAcc = accessor3D<kernel::BTensor3RW>(adj_tf);
 
-			tfEval.adjoint<hasTFDerivative, false>(
+			tfEval.template adjoint<hasTFDerivative, false>(
 				myTFacc, 0, myDensity, adj_color, adj_density, adj_tfAcc, nullptr);
 
 			z[0] = adj_density;
