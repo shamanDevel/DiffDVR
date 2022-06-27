@@ -127,6 +127,7 @@ For ASTRA, pre-built binaries are available. For example, I placed the ASTRA bin
 For Mitsuba, clone the "Radiance Backpropagation" repository and the scene data provided on their webpage [3] into the common parent folder `MITSUBA_ROOT`. Replace `MITSUBA_ROOT/mitsuba2/src/media/heterogeneous_absorptive.cpp` with the version provided in `tests/volume/mitsuba/heterogeneous_absorptive.cpp`. Compile the library. Copy `tests/volume/mitsuba/optimize_rb2.py` to `MITSUBA_ROOT/mitsuba2/src/optix/tests/optimize_rb2.py`.
 
 The base command lines for the comparison of reconstructions are
+
     > python3 compare_reconstruction.py results/volume/density/skull7absorption config-files/skull7absorption.json --views 64 --diffdvrL1 --visCropSlice 73:2:64:96 --visCropRendering 62:250:192:128 --visRenderingDiffScaling 20 --visSliceDiffScaling 5 --visSliceRotate 3
     > python3 compare_reconstruction.py results/volume/density/plume123absorption config-files/plume123-linear-absorption.json --views 64 --diffdvrL1 --visCropSlice 95:125:96:64 --visCropRendering 90:30:192:128 --visRenderingDiffScaling 20 --visSliceDiffScaling 5 --visSliceRotate 2
     > python3 compare_reconstruction.py results/volume/density/thorax2absorption config-files/thorax2absorption.json --views 64 --diffdvrL1 --visSliceIndividualNormalize --visCropSlice 104:37:96:64 --visCropRendering 30:215:192:128 --visRenderingDiffScaling 20 --visSliceDiffScaling 5 --visSliceRotate 0
