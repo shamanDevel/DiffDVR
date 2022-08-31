@@ -14,7 +14,7 @@
         "zoomValue": 2.0
     },
     "dataset": {
-        "file": "..\\volumes\\cvol\\single_jet.cvol",
+        "file": "..\\volumes\\single_jet.cvol",
         "mipmap": 0,
         "syntheticDataset": -1,
         "syntheticDatasetResolutionPower": 6
