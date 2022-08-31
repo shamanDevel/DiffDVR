@@ -14,7 +14,7 @@
         "zoomValue": 4.0
     },
     "dataset": {
-        "file": "..\\volumes\\cvol\\C60Large.cvol",
+        "file": "..\\volumes\\C60Large.cvol",
         "mipmap": 0,
         "syntheticDataset": -1,
         "syntheticDatasetResolutionPower": 6
